@@ -1,0 +1,43 @@
+# Here is an example file for a simple three section flute with no tuning slide.
+id	rf1
+name	delrinD
+measuredBy	"Rob Forbes"
+units	inch
+
+# Head Section
+section	Head	8.7
+blowHole	2.	.5	.35	1.1	.82
+bore
+0.	.75
+7.95	.75
+body 
+0.	1.1
+8.7	1.1
+
+joint	up	.75	.95 .25
+
+# Middle Section
+section	Middle	8.35
+toneHole	3.75	.34	1.053	# C
+toneHole	5.2	.41	1.030	# B
+toneHole	6.6	.29	1.008	# A
+bore 
+0.	.725
+7.6	.62	# end bore at beginning of socket
+body    
+.75	1.1	# start body OD at root of tenon
+8.35	.98
+
+joint	up	.75	.82
+
+# Foot Section
+section	Foot	7.43
+toneHole	1.2	.37	.971	# G
+toneHole	2.4	.43	.948	# F#
+toneHole	3.9	.25	.919	# E
+bore 
+0.	.62
+7.43	.5
+body    
+.75	.98	# start body OD at root of tenon
+7.43	.851

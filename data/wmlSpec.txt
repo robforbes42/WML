@@ -1,0 +1,48 @@
+# Anything following '#' is a comment. 
+# Blank lines are ignored. Whitespace can be any number of of spaces and/or tabs
+# All record types are optional unless otherwise stated
+# parens indicate an optional value
+# value types are: text, int, float, note, octNote. "note" is a standard note name, e.g. "Bb", 
+#    octNote adds an octave number, e.g "C4"
+# value options are in square brackets, e.g. [mm|inch]
+# Although characters '()[]|" are used here to indicate grammar, they do NOT appear in an actual file
+# Similarly, if "(name:text)" (e.g.) appears below, the only thing that appears in the file is a string, e.g. 'Fred'
+
+# These are for identifying information (e.g. that might appear in an index):
+
+id text 			# A unique identifier
+name text		# A short label (e.g. that might be used in a graph legend)
+type [flute|whistle|bagpipe|...]	# The general type of instrument
+subType [classical|modern|uillean|quena|...]	# More specific information about the type of instrument
+owner text 		# The current owner of the instrument (a person or institution)
+maker text		# The maker of the instrument (a person or company)
+serial text 		# The serial number of the instrument
+createdBy text	# The person who created this file
+measuredBy text   # The person who made the measurement
+url text			# A link to associated information
+version float	# a version number
+comments text	# Brief additional comments (e.g. date of manufacture)
+
+# Technical info 
+units [mm|inch]
+keyOf note	# nominal scale, e.g. C for a boehm flute, Bb for a band flute, F for a small whistle...
+noteRange lowNote:octNote highNote:octNote	# The instrument's range, e.g. "C4 C6". 
+pitchStandard float	# The frequency of A in the pitch the instrument is built for (e.g. 440.)
+
+# Measurements
+# secX indicates a section coordinate measured from the top (blowing end) of the current section.
+part name:text	# Start new part. Only needed for instruments like bagpipes that have chanter, drones, etc.
+section name:text length:float	# Start new section. At least one section is required.
+altSection name:text	# Like section, but indicates it can substitute for the current section  
+#  (e.g. corps de rechange in historical flutes)
+toneHoles # start a list of tone holes in this section
+secX:double holeDiam:double (holeAngle:double) (bodyDiam:double) (bodyToTop:double) # A tone hole measurement
+#  angle is clockwise when looking down the instrument (i.e. from top to bottom)
+blowHole secX:double length:double width:double	(bodyDiam:double) (corkDist:double) # Embouchure or fipple hole 
+# in the current section. "length" is along instrument, "width" is crosswise.
+joint tenonDir:[up|down] tenonDiam:float tenonLength:float (extension:float)	# A tenon/socket joint; this record 
+# must appear between any two sections (and can optionally appear before the first section)
+bore					# Start a section bore profile
+body    				# Start a section body profile
+secX:float diam:float	# a measurement in a body or bore profile
+
